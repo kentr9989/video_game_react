@@ -3,6 +3,7 @@ import apiClient from "../services/api-client";
 import axios, {AxiosError} from 'axios';
 
 export interface Game {
+    parent_platforms: any;
     id: number;
     name: string;
     background_image: string;
