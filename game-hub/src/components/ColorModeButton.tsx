@@ -8,23 +8,20 @@ import {
 import React from "react";
 
 const ColorModeButton = () => {
+  // Use state for color mode
   const { colorMode, toggleColorMode } = useColorMode();
   return (
     <Stack direction="row" position="fixed" top={0} right={0} padding="10px">
-      <FormLabel htmlFor="colorswitch" left={2} pr={0}>
-        Switch color
+      <FormLabel htmlFor="colorswitch">
+        Change color theme
       </FormLabel>
       <Switch
         id="colorswitch"
         colorScheme="teal"
-        size="lg"
+        size="md"
         pl={0}
         onChange={toggleColorMode}
-        // position="fixed"
-        // top={0}
-        // right={0}
-        // p={4}
-        // pl={0}
+        mt={1}
       />
     </Stack>
   );

@@ -2,23 +2,20 @@ import { useState, useEffect } from "react";
 import apiClient from "../services/api-client";
 import axios, {AxiosError} from 'axios';
 
-export interface Game {
-    [x: string]: any;
-    parent_platforms: any;
-    id: number;
-    name: string;
-    background_image: string;
-    metacritic: number;
-    rating: number;
-    playtime: number;
-}
-interface FetchGamesResponse {
-    count: number;
-    results: Game[];
+interface Platform {
+    id : number; 
+    name : string; 
+    slug : string;
+
 }
 
-const useGames = () => {
-    const [games, setGames] = useState<Game[]>([]);
+interface FetchPlatformsResponse {
+    count: number;
+    results: Platform[];
+}
+
+const usePlatforms = () => {
+    const [platforms,setPlatform] = useState<Platform[]>([]);
     const [errors, setError] = useState("");
     const [isLoading,setLoading] = useState(false);
 
@@ -26,10 +23,9 @@ const useGames = () => {
       const controller = new AbortController();
       setLoading(true);
       apiClient
-        .get<FetchGamesResponse>("/games", { signal : controller.signal })
+        .get<FetchPlatformsResponse>("/platforms/lists/parents", { signal : controller.signal })
         .then((res) => {
-            console.log(res.data);
-            setGames(res.data.results);
+        setPlatform(res.data.results);
             setLoading(false);
         })
         .catch((err) => {
@@ -40,7 +36,7 @@ const useGames = () => {
       return () => controller.abort();
     }, []);
     
-    return { games, errors , isLoading} ;
-}
+    return { platforms, errors , isLoading} ;
+};
 
-export default useGames;
+export default usePlatforms;

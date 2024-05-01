@@ -1,4 +1,5 @@
 // theme.ts
+// use to change for dark color mode
 
 // 1. import `extendTheme` function
 import { extendTheme, type ThemeConfig } from '@chakra-ui/react'

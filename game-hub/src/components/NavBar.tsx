@@ -7,14 +7,14 @@ const NavBar = () => {
     <HStack>
       <Image
         src={logo}
-        boxSize="60px"
-        mt={"-1.5"}
+        boxSize="40px"
+        mt={"-1"}
         borderRadius="full"
         objectFit="cover"
       />
-      <Text as="b" fontSize="xl">
+      <Text fontSize="15">
         {" "}
-        Nav Bar
+        Game hub 
       </Text>
     </HStack>
   );
